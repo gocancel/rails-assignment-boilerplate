@@ -1,0 +1,19 @@
+<header>
+  <h1>
+    My Books
+  </h1>
+</header>
+
+<aside>
+  <nav>
+    <h1>
+      Bookshelves
+    </h1>
+    <ul>
+      <%= link_to 'All', books_path %>
+      <%= link_to 'Read', books_path(shelf: :read) %>
+      <%= link_to 'Currently Reading', books_path(shelf: :currently_reading) %>
+      <%= link_to 'Want to Read', books_path(shelf: :want_to_read) %>
+    </ul>
+  </nav>
+</aside>

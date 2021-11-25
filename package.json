@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "run-p build:js build:schema",
+    "build:css": "NODE_ENV=production postcss app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
+    "build:js": "esbuild app/javascript/*.* --bundle --loader:.js=jsx --outdir=app/assets/builds '--define:process.env.NODE_ENV=\"production\"' --minify",
+    "watch": "run-p watch:*",
+    "watch:css": "postcss app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --watch",
+    "watch:js": "esbuild app/javascript/*.* --bundle --loader:.js=jsx --outdir=app/assets/builds --watch"
+  },
+  "dependencies": {
+    "@hotwired/turbo-rails": "^7.1.0",
+    "autoprefixer": "^10.4.0",
+    "esbuild": "^0.13.15",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.1",
+    "postcss-cli": "^9.0.2",
+    "postcss-import": "^14.0.2"
+  }
+}

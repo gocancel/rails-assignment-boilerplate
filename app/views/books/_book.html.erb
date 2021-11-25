@@ -1,0 +1,7 @@
+<article>
+  <figure>
+    <%= link_to book_path(book) do %>
+      <img src="<%= url_for(book.cover) %>" alt="<%= "The cover artwork for #{book.title}" %>" width="100" height="150">
+    <% end %>
+  </figure>
+</article>

@@ -1,0 +1,7 @@
+<%= render 'header' %>
+
+<main>
+  <turbo-frame id="books">
+    <%= render(partial: 'book', collection: @books) %>
+  </turbo-frame>
+</main>
