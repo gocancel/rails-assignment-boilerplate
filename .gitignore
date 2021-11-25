@@ -1,0 +1,12 @@
+/.bundle
+/config/master.key
+/db/*.sqlite3
+/db/*.sqlite3-*
+/log/*
+!log/.keep
+/public/assets
+/tmp/*
+!tmp/.keep
+/tmp/pids/*
+!tmp/pids/.keep
+.byebug_history
