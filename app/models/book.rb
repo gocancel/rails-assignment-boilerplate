@@ -6,4 +6,6 @@ class Book < ApplicationRecord
   has_one_attached :cover
 
   scope :by_shelf, -> shelf { where(shelf: shelf) }
+  
+  validates :title, presence: true
 end

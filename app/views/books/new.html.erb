@@ -1,0 +1,30 @@
+<%= render 'header' %>
+
+<main>
+  <turbo-frame id="books">
+    <article>
+      <h1>
+        Add a new book
+      </h1>
+      <figure>
+        <%= render(partial: 'authors/new_form', locals: { author: Author.new }) %>
+        
+        <%= turbo_stream_from 'authors' %>
+        <%= form_for @book do |f| %>
+          <%= f.label :title, "Title" %>
+          <%= f.text_field :title %>
+          <%= f.label :shelf, "Shelf" %>
+          <%= f.select :shelf, data_for_shelf_select %>
+          <%= f.label :cover, "Book cover" %>
+          <%= f.file_field :cover %>
+          <%= f.label :author, "Author" %>
+          <select name="book[author_id]" id="book_author_id authors">
+            <div id="authors">ji</div>
+            <%= render partial: "authors/author", collection: @authors %>
+          </select>
+          <%= f.submit %>
+        <% end %>
+      </figure>
+    </article>
+  </turbo-frame>
+</main>
