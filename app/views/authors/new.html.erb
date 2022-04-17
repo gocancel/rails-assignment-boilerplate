@@ -1,0 +1,7 @@
+<turbo-frame id="author">
+  <%= form_for @author do |f| %>
+    <%= f.label :name, "Name of the author" %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+</turbo-frame>

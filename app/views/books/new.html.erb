@@ -1,14 +1,15 @@
 <%= render 'header' %>
 
 <main>
-  <turbo-frame id="books">
+  <turbo-frame id="new_book">
     <article>
       <h1>
         Add a new book
       </h1>
       <figure>
-        <%= render(partial: 'authors/new_form', locals: { author: Author.new }) %>
-        
+        <turbo-frame id="author">
+          <%= link_to 'Author missing? Add an author', new_author_path %>
+        </turbo-frame>
         <%= turbo_stream_from 'authors' %>
         <%= form_for @book do |f| %>
           <%= f.label :title, "Title" %>

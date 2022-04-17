@@ -4,4 +4,7 @@
   <turbo-frame id="books">
     <%= render(partial: 'book', collection: @books) %>
   </turbo-frame>
+  <turbo-frame id="new_book">
+    <%= link_to 'Add a new book', new_book_path %>
+  </turbo-frame>
 </main>

@@ -15,9 +15,15 @@ class BooksController < ApplicationController
   end
   
   def create
-    @book = Book.create(book_params)
-    if @book
-      redirect_to @book, notice: 'Book created.'
+    @book = Book.new(book_params)
+
+    if @book.save
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(:books, partial: "books/book", locals: { book: @book })
+        end
+        format.html { redirect_to @book, notice: 'Book created.' }
+      end
     else
       render :new, status: :unprocessable_entity
     end

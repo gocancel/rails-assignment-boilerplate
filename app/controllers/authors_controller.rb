@@ -8,17 +8,12 @@ class AuthorsController < ApplicationController
   end
   
   def create
-    @author = Author.create(author_params)
-      if @author.save
-        respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.prepend(:authors, partial: 'authors/author', locals: { author: @author })
-          end
-          format.html { redirect_to @author, notice: 'Author created.' }
-        end
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    @author = Author.new(author_params)
+    if @author.save
+      redirect_to @author, notice: 'Author created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
   
   def author_params
