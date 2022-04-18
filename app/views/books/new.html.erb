@@ -11,6 +11,9 @@
           <%= link_to 'Author missing? Add an author', new_author_path %>
         </turbo-frame>
         <%= turbo_stream_from 'authors' %>
+        <div id= "book_errors">
+          <%= render partial: 'shared/errors', locals: { object: @book } %>
+        </div>
         <%= form_for @book do |f| %>
           <%= f.label :title, "Title" %>
           <%= f.text_field :title %>

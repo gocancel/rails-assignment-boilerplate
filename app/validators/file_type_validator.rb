@@ -7,6 +7,7 @@ class FileTypeValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     @file_blob = value.blob
+    return unless file_blob
     record.errors.add(attribute, 'File name invalid') unless file_name_format_valid?
     record.errors.add(attribute, 'File is not an image') if options.key?(:image) && !file_is_an_image?
     if options.key?(:blacklist) && file_type_in_blacklist?(options[:blacklist])

@@ -1,4 +1,5 @@
 <turbo-frame id="author">
+  <%= render partial: 'shared/errors', locals: { object: @author } %>
   <%= form_for @author do |f| %>
     <%= f.label :name, "Name of the author" %>
     <%= f.text_field :name %>

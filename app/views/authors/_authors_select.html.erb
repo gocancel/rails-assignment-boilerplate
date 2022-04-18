@@ -1,5 +1,5 @@
 <select name="book[author_id]" id="book_author_id">
-  <% @authors.each do |author| %>
+  <% authors.each do |author| %>
     <option value="<%= author.id %>"><%= author.name %></option>
   <% end %>
 </select>

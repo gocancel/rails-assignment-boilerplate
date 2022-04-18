@@ -1,0 +1,11 @@
+<turbo-stream action="append" target="books">
+  <template>
+    <%= render partial: 'books/book', locals: { book: @book }, formats: [:html] %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="book_errors">
+  <template>
+    <%= render partial: "shared/errors", locals: { object: @book }, formats: [:html] %>
+  </template>
+</turbo-stream>

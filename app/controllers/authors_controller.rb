@@ -19,7 +19,7 @@ class AuthorsController < ApplicationController
         format.html { redirect_to @author, notice: 'Author created.' }
       end
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
