@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FileSizeValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     @file_blob = value.blob
@@ -6,11 +8,11 @@ class FileSizeValidator < ActiveModel::EachValidator
   end
 
   private
-  
+
   def smaller_than_min_size
     @file_blob.byte_size.bytes < options[:min_size]
   end
-  
+
   def bigger_than_max_size
     @file_blob.byte_size.bytes > options[:max_size]
   end
