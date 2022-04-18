@@ -2,6 +2,9 @@
 
 class FileTypeValidator < ActiveModel::EachValidator
   FILE_NAME_REGEX = /^[\w\-. ]+$/.freeze
+  
+  attr_reader :file_blob
+
   def validate_each(record, attribute, value)
     @file_blob = value.blob
     record.errors.add(attribute, 'File name invalid') unless file_name_format_valid?
@@ -14,14 +17,14 @@ class FileTypeValidator < ActiveModel::EachValidator
   private
 
   def file_name_format_valid?
-    FILE_NAME_REGEX.match?(@file_blob.filename.to_s)
+    FILE_NAME_REGEX.match?(file_blob.filename.to_s)
   end
 
   def file_is_an_image?
-    @file_blob.image?
+    file_blob.image?
   end
 
   def file_type_in_blacklist?(blacklist)
-    blacklist.include? @file_blob.content_type
+    blacklist.include? file_blob.content_type
   end
 end

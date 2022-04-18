@@ -2,6 +2,7 @@
 
 module BooksHelper
   def data_for_shelf_select
-    Book.shelves.keys.to_a.map(&:humanize).zip(Book.shelves.keys.to_a)
+    shelf_names = Book.shelves.keys.to_a
+    shelf_names.map(&:humanize).zip(shelf_names)
   end
 end
