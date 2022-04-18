@@ -1,0 +1,11 @@
+<turbo-stream action="replace" target="authors">
+  <template>
+    <%= render partial: "authors_select", locals: { authors: @authors }, formats: [:html] %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="author">
+  <template>
+    <%= render partial: "author", locals: {author: @author}, formats: [:html] %>
+  </template>
+</turbo-stream>

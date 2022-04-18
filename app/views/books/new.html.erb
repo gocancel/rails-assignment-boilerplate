@@ -19,10 +19,9 @@
           <%= f.label :cover, "Book cover" %>
           <%= f.file_field :cover %>
           <%= f.label :author, "Author" %>
-          <select name="book[author_id]" id="book_author_id authors">
-            <div id="authors">ji</div>
-            <%= render partial: "authors/author", collection: @authors %>
-          </select>
+          <div id="authors">
+            <%= render partial: "authors/authors_select", locals: { authors: @authors } %>
+          </div>
           <%= f.submit %>
         <% end %>
       </figure>
