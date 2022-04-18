@@ -16,7 +16,6 @@ class BooksController < ApplicationController
   
   def create
     @book = Book.new(book_params)
-
     if @book.save
       respond_to do |format|
         format.turbo_stream do

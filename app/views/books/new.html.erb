@@ -17,7 +17,7 @@
           <%= f.label :shelf, "Shelf" %>
           <%= f.select :shelf, data_for_shelf_select %>
           <%= f.label :cover, "Book cover" %>
-          <%= f.file_field :cover %>
+          <%= f.file_field :cover, accept:'image/*' %>
           <%= f.label :author, "Author" %>
           <div id="authors">
             <%= render partial: "authors/authors_select", locals: { authors: @authors } %>
