@@ -79,8 +79,16 @@ GEM
     crass (1.0.6)
     cssbundling-rails (0.2.6)
       railties (>= 6.0.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     diff-lcs (1.5.0)
     erubi (1.10.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.4)
     foreman (0.87.2)
     globalid (0.6.0)
@@ -236,6 +244,9 @@ DEPENDENCIES
   byebug
   capybara
   cssbundling-rails (~> 0.2.6)
+  database_cleaner-active_record
+  factory_bot
+  faker
   foreman (~> 0.87.2)
   has_scope (~> 0.8.0)
   jsbundling-rails (~> 0.2.0)

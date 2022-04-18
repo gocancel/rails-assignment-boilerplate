@@ -24,6 +24,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.1'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'factory_bot'
+  gem 'faker'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do

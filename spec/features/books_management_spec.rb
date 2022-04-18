@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Books creation', type: :feature do
-  JPEG_PICTURE_PATH = Rails.root.join('spec/files/very_nice_cat.jpeg')
+  JPEG_PICTURE_PATH = Rails.root.join('spec/fixtures/files/very_nice_cat.jpeg')
 
   scenario 'User creates a new book with a new author', js: true do
     visit books_path
