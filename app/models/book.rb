@@ -6,4 +6,9 @@ class Book < ApplicationRecord
   has_one_attached :cover
 
   scope :by_shelf, -> shelf { where(shelf: shelf) }
+
+  # validates :cover, attached: true, content_type: ["image/png", "image/jpeg"]
+  validates :title, presence: true
+
+  validates_associated :author
 end

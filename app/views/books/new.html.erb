@@ -1,0 +1,31 @@
+<div> Create New Book </div>
+
+
+<turbo-frame id="new-book">
+  <article>
+    <ul>
+      <% @book.errors.full_messages.each do |er| %>
+        <li> <%= er %> </li>
+      <% end %>
+    </ul>
+
+    <%= form_with model: @book do |f| %>
+      <%= f.text_field :title %>
+      <%= f.file_field :cover %>
+      <%= f.select :shelf, Book.shelves.keys, {include_blank: false} %>
+      <%#= f.file_field :shelf %>
+      <p>
+        author:
+        <%= f.select(:author_id, Author.pluck(:name, :id), {include_blank: true}, {id: "author-select"}) %>
+        or create author
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit %>
+        <aside>
+          <%= link_to '&larr; See all'.html_safe, books_path, data: { turbo_frame: '_top' } %>
+        </aside>
+      </p>
+    <% end %>
+  </article>
+</turbo-frame>
