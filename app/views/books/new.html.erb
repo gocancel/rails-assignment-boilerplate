@@ -1,8 +1,21 @@
 <div> Create New Book </div>
 
-<%= form_with model: @book do |form| %>
-  <%= form.text_field :title %>
-  <%= form.file_field :cover %>
-  <%#= form.file_field :shelf %>
-  <%= form.submit %>
+<!--%p-->
+<!--author:-->
+<!--=f.select(:author_id, Author.pluck(:name, :id), {include_blank: true}, {id: "author-select"})-->
+<!--or create author-->
+<!--%input{name: "name", type: "text", id: "author-name-field"}-->
+
+<%= form_with model: @book do |f| %>
+  <%= f.text_field :title %>
+  <%= f.file_field :cover %>
+  <%= f.select :shelf, Book.shelves.keys, {include_blank: false} %>
+  <%#= f.file_field :shelf %>
+  <p>
+    author:
+    <%= f.select(:author_id, Author.pluck(:name, :id), {include_blank: true}, {id: "author-select"}) %>
+    or create author
+    <%= f.text_field :name %>
+  </p>
+  <%= f.submit %>
 <% end %>

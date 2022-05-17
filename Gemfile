@@ -15,6 +15,9 @@ gem 'sqlite3', '~> 1.4'
 gem 'turbo-rails', '~> 0.9.0'
 
 group :development, :test do
+  gem 'pry', '~> 0.13.1'
+  gem 'pry-remote'
+  gem 'pry-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

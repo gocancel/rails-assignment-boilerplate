@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def index
     # TODO: Book.with_attached_avatar
-    @books = apply_scopes(Book.includes(:cover_attachment)).all
+    @books = apply_scopes(Book.with_attached_cover).all
   end
 
   def show
@@ -15,15 +15,32 @@ class BooksController < ApplicationController
   end
 
   def	create
-    @book = Book.create!(book_params)
-    # @book.save ? redirect_to(book_path(@book)) : render(:new)
+    # binding.remote_pry
+    # binding.pry
 
-    redirect_to @book
+    puts "PARAMS:"
+    puts params
+
+    if author_params[:name].present? && book_params[:author_id].present?
+      @book = Book.new(book_params)
+      @book.errors.add(:base, "Choose author or enter authors name to create a new one!")
+      return render(:new)
+    elsif author_params[:name].present?
+      @autor = Author.create(name: author_params[:name])
+      @book = @autor.books.new(book_params)
+    else
+      @book = Book.new(book_params)
+    end
+    @book.save ? redirect_to(book_path(@book)) : render(:new)
   end
 
   private
 
+  def author_params
+    params.require(:book).permit(:name)
+  end
+
   def book_params
-    params.require(:book).permit(:title, :cover, :shelf)
+    params.require(:book).permit(:title, :cover, :shelf, :author_id)
   end
 end
