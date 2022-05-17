@@ -13,6 +13,8 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
 gem 'turbo-rails', '~> 0.9.0'
+gem 'file_validators'
+
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'

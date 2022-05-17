@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   has_scope :by_shelf, as: :shelf
 
   def index
-    # TODO: Book.with_attached_avatar
+    # Book.with_attached_cover fixed n+1 caused by 'includes'
     @books = apply_scopes(Book.with_attached_cover).all
   end
 
@@ -11,16 +11,10 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book ||= Book.new
   end
 
   def	create
-    # binding.remote_pry
-    # binding.pry
-
-    puts "PARAMS:"
-    puts params
-
     if author_params[:name].present? && book_params[:author_id].present?
       @book = Book.new(book_params)
       @book.errors.add(:base, "Choose author or enter authors name to create a new one!")
