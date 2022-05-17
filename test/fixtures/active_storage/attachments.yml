@@ -1,6 +1,4 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveStorage/FixtureSet.html
-
-cover_1984_attachment: {}
+cover_1984_attachment:
   name: cover
   record: 1984 (Book)
   blob: cover_1984_blob
